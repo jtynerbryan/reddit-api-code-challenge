@@ -32,7 +32,7 @@ class Redirect extends React.Component {
       data: JSON.stringify({
         grant_type: 'authorization_code',
         code: this.state.code,
-        redirect_uri: 'http://localhost:3000/success'
+        redirect_uri: 'https://reddit-code-challenge.herokuapp.com/success'
       })
     };
 
