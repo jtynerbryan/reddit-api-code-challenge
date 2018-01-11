@@ -11,7 +11,7 @@ class App extends Component {
       <div>
         <Route exact path="/" component={FetchSubreddits} />
         <Route exact path="/topics" component={TopicsList} />
-        <Route exact path="/subreddits" component={SubredditList} />
+        <Route exact path="/subreddit-list" component={SubredditList} />
       </div>
     );
   }

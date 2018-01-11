@@ -34,8 +34,15 @@ export function sortTopicsAndSubreddits(topics) {
       })
       .reverse();
   });
-  console.log(sortedTopics);
+
   return dispatch => {
     dispatch({ type: 'SORT_TOPICS_AND_SUBREDDITS', payload: sortedTopics.reverse() });
+  };
+}
+
+export function setSubredditListToRender(topic, subredditList) {
+  let payload = { topic: topic, subreddits: subredditList };
+  return dispatch => {
+    dispatch({ type: 'SET_SUBREDDIT_LIST_TO_RENDER', payload: payload });
   };
 }
