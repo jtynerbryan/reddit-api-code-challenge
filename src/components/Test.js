@@ -6,7 +6,7 @@ class Test extends React.Component {
   };
 
   componentDidMount() {
-    return fetch(`https://www.reddit.com/subreddits/search.json?q=architecture`)
+    return fetch(`https://www.reddit.com/subreddits/search.json?q=science`)
       .then(res => res.json())
       .then(res =>
         this.setState({
