@@ -1,31 +1,14 @@
 const topics = (
   state = {
-    names: [
-      'architecture',
-      'art',
-      'business',
-      'education',
-      'entertainment',
-      'gaming',
-      'general',
-      'hobbies and interests',
-      'law',
-      'lifestyle',
-      'locations',
-      'meta',
-      'music',
-      'news and politics',
-      'science',
-      'social science and humanities',
-      'sports',
-      'technology',
-      'travel',
-      'other'
-    ]
+    topicsWithSubreddits: []
   },
   action
 ) => {
   switch (action.type) {
+    case 'ADD_TOPICS_WITH_SUBREDDITS':
+      return { ...state, topicsWithSubreddits: action.payload };
+    case 'SORT_TOPICS':
+      return { ...state, topicsWithSubreddits: action.payload };
     default:
       return state;
   }
