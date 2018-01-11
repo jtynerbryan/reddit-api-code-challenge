@@ -12,7 +12,9 @@ export function fetchSubredditsbyTopic(topics) {
   };
 }
 
-export function sortTopics(topics) {
+// sort topics by aggregate of subscriber count from relevant subreddits
+
+export function sortTopicsAndSubreddits(topics) {
   topics.map(topic => {
     return topic.subreddits.map(subreddit => {
       return (topic.points += subreddit.data.subscribers);
@@ -23,8 +25,17 @@ export function sortTopics(topics) {
     return a.points - b.points;
   });
 
+  // then sort subreddits themselves by subscriber count
+
+  sortedTopics.map(topic => {
+    return topic.subreddits
+      .sort((a, b) => {
+        return a.data.subscribers - b.data.subscribers;
+      })
+      .reverse();
+  });
   console.log(sortedTopics);
   return dispatch => {
-    dispatch({ type: 'SORT_TOPICS', payload: sortedTopics.reverse() });
+    dispatch({ type: 'SORT_TOPICS_AND_SUBREDDITS', payload: sortedTopics.reverse() });
   };
 }

@@ -7,7 +7,7 @@ const topics = (
   switch (action.type) {
     case 'ADD_TOPICS_WITH_SUBREDDITS':
       return { ...state, topicsWithSubreddits: action.payload };
-    case 'SORT_TOPICS':
+    case 'SORT_TOPICS_AND_SUBREDDITS':
       return { ...state, topicsWithSubreddits: action.payload };
     default:
       return state;

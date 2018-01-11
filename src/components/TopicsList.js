@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { sortTopics } from '../actions/index';
+import { sortTopicsAndSubreddits } from '../actions/index';
+import Topic from './Topic';
 
 class TopicsList extends React.Component {
   state = {
@@ -13,9 +14,9 @@ class TopicsList extends React.Component {
       if (this.props.topics.topicsWithSubreddits.length === 0) {
         this.props.history.push('/');
       } else {
-        this.props.sortTopics(this.props.topics.topicsWithSubreddits);
+        this.props.sortTopicsAndSubreddits(this.props.topics.topicsWithSubreddits);
       }
-    }, 2000);
+    }, 3000);
   }
 
   componentDidUpdate() {
@@ -31,22 +32,16 @@ class TopicsList extends React.Component {
     if (!this.state.sorted) {
       return (
         <div>
-          <h1>Sorting Topics...</h1>
+          <h1>Sorting Topics and Subreddits...</h1>
         </div>
       );
     } else {
       let topicList = this.props.topics.topicsWithSubreddits.map((topic, index) => {
-        return (
-          <div key={index}>
-            <h1>
-              {index + 1}. {topic.name}, points: {topic.points}
-            </h1>
-          </div>
-        );
+        return <Topic key={index} topic={topic} index={index} />;
       });
       return (
         <div>
-          <h1>Topic List</h1>
+          <h1>Topic List (click for relevant subreddits)</h1>
           {topicList}
         </div>
       );
@@ -61,7 +56,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ sortTopics }, dispatch);
+  return bindActionCreators({ sortTopicsAndSubreddits }, dispatch);
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TopicsList);
