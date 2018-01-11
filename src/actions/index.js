@@ -41,8 +41,18 @@ export function sortTopicsAndSubreddits(topics) {
 }
 
 export function setSubredditListToRender(topic, subredditList) {
-  let payload = { topic: topic, subreddits: subredditList };
+  let payload = { topic: topic, subreddits: subredditList.subreddits };
   return dispatch => {
     dispatch({ type: 'SET_SUBREDDIT_LIST_TO_RENDER', payload: payload });
+  };
+}
+
+export function setSelectedSubreddit(subreddit) {
+  return dispatch => {
+    return fetch(`https://www.reddit.com/${subreddit}.json`)
+      .then(res => res.json())
+      .then(res => {
+        dispatch({ type: 'SET_SELECTED_SUBREDDIT', payload: res.data.children });
+      });
   };
 }
