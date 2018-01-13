@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { setSubredditListToRender } from '../actions/index';
+import { setSubredditListToRender, addTopic } from '../actions/index';
 import ReactAutocomplete from 'react-autocomplete';
 
 class TopicsList extends React.Component {
@@ -39,6 +39,8 @@ class TopicsList extends React.Component {
       this.props.setSubredditListToRender(value, this.props.topics.topicsWithSubreddits[topics.indexOf(value)]);
 
       this.props.history.push('/subreddit-list');
+    } else {
+      this.props.addTopic(value, this.props.topics.topicsWithSubreddits);
     }
   };
 
@@ -86,7 +88,13 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ setSubredditListToRender }, dispatch);
+  return bindActionCreators(
+    {
+      setSubredditListToRender,
+      addTopic
+    },
+    dispatch
+  );
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TopicsList);

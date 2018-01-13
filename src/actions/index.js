@@ -40,6 +40,15 @@ export function sortTopicsAndSubreddits(topics) {
   };
 }
 
+export function addTopic(topic, topicsWithSubreddits) {
+  return dispatch => {
+    // fetch subreddits for new topic
+    return fetch(`https://www.reddit.com/subreddits/search.json?q=${topic.replace(/ /g, '+')}`)
+      .then(res => res.json())
+      .then(res => dispatch({ type: 'ADD_TOPIC', payload: { name: topic, points: 0, subreddits: res.data.children } }));
+  };
+}
+
 export function setSubredditListToRender(topic, subredditList) {
   let payload = { topic: topic, subreddits: subredditList.subreddits };
   return dispatch => {
