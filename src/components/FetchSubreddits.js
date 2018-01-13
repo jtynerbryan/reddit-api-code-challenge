@@ -1,10 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchSubredditsbyTopic } from '../actions/index';
+import { fetchSubredditsbyTopic, sortTopicsAndSubreddits } from '../actions/index';
 
 class FetchSubreddits extends React.Component {
   state = {
+    sorted: false,
     names: [
       'architecture',
       'art',
@@ -30,17 +31,24 @@ class FetchSubreddits extends React.Component {
   };
 
   componentDidMount() {
-    if (this.props.topics.topicsWithSubreddits.length === 0) {
-      this.props.fetchSubredditsbyTopic(this.state.names);
-    }
+    this.props.fetchSubredditsbyTopic(this.state.names);
+  }
 
-    this.props.history.push('/topics');
+  componentDidUpdate() {
+    if (this.props.topics.sorted === false) {
+      setTimeout(() => {
+        this.props.sortTopicsAndSubreddits(this.props.topics.topicsWithSubreddits);
+      }, 3000);
+    } else {
+      this.props.history.push('/topics');
+    }
   }
 
   render() {
+    console.log(this.props);
     return (
       <div>
-        <h1>Fetching Subreddits By Topic...</h1>
+        <h1>Fetching and Sorting Subreddits By Topic...</h1>
       </div>
     );
   }
@@ -48,12 +56,13 @@ class FetchSubreddits extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    topics: state.topics
+    topics: state.topics,
+    subredditList: state.subreddits.subredditListToRender
   };
 };
 
 const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ fetchSubredditsbyTopic }, dispatch);
+  return bindActionCreators({ fetchSubredditsbyTopic, sortTopicsAndSubreddits }, dispatch);
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(FetchSubreddits);

@@ -1,6 +1,7 @@
 const topics = (
   state = {
-    topicsWithSubreddits: []
+    topicsWithSubreddits: [],
+    sorted: false
   },
   action
 ) => {
@@ -8,7 +9,8 @@ const topics = (
     case 'ADD_TOPICS_WITH_SUBREDDITS':
       return { ...state, topicsWithSubreddits: action.payload };
     case 'SORT_TOPICS_AND_SUBREDDITS':
-      return { ...state, topicsWithSubreddits: action.payload };
+      debugger;
+      return { ...state, topicsWithSubreddits: action.payload, sorted: true };
     default:
       return state;
   }
