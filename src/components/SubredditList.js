@@ -18,8 +18,8 @@ class SubredditList extends React.Component {
   render() {
     let subredditList = this.props.subredditList.subreddits.slice(1).map((subreddit, index) => {
       return (
-        <div key={index} className="subreddit">
-          <h1 onClick={() => this.handleSelectedSubReddit(subreddit.data.display_name_prefixed)}>{subreddit.data.display_name_prefixed}</h1>
+        <div key={index} className="subreddit" onClick={() => this.handleSelectedSubReddit(subreddit.data.display_name_prefixed)}>
+          <h1>{subreddit.data.display_name_prefixed}</h1>
           <h2>{subreddit.data.public_description}</h2>
           <h3>{subreddit.data.subscribers} subscribers</h3>
         </div>
@@ -30,6 +30,7 @@ class SubredditList extends React.Component {
       <div>
         <button onClick={this.handleClick}>all topics</button>
         <h1>{this.props.subredditList.topic.toUpperCase()}</h1>
+        <h3>click on subreddits for preview</h3>
         {subredditList}
       </div>
     );
