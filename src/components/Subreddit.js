@@ -9,7 +9,7 @@ class Subreddit extends React.Component {
   render() {
     let posts = this.props.subreddits.selectedSubreddit.map((post, index) => {
       return (
-        <div key={index}>
+        <div key={index} className="post">
           <h1>{post.data.title}</h1>
           <p>ups: {post.data.ups}</p>
           <p>downs: {post.data.downs}</p>

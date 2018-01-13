@@ -19,9 +19,9 @@ class TopicsList extends React.Component {
   render() {
     let topicList = this.props.topics.topicsWithSubreddits.map((topic, index) => {
       return (
-        <div key={index}>
-          <h1 onClick={() => this.handleClick(topic.name, index)} className="topic-list">
-            {index + 1}. {topic.name.toUpperCase()}, points: {topic.points}
+        <div key={index} className="topic-list">
+          <h1 onClick={() => this.handleClick(topic.name, index)} className="topic">
+            {index + 1}. {topic.name.toUpperCase()} ({topic.points} points)
           </h1>
         </div>
       );

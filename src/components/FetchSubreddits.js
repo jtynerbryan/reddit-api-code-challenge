@@ -46,7 +46,7 @@ class FetchSubreddits extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="load-screen">
         <h1>Fetching and Sorting Subreddits By Topic...</h1>
       </div>
     );

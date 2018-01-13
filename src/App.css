@@ -1,9 +1,46 @@
 body {
   text-align: center;
+  background-color: #212121;
+  color: #fff;
 }
 
-.topic-list,
+.topic,
 button,
 .subreddit {
   cursor: pointer;
+}
+
+.topic {
+  font-size: 30px;
+}
+
+.subreddit,
+.post {
+  width: 50%;
+  display: inline-block;
+  border: solid 5px #fff;
+  border-radius: 5px;
+  margin: 20px;
+  padding: 5px;
+}
+
+button {
+  margin-top: 10px;
+  font-size: 17px;
+  background-color: #2196f3;
+  color: #fff;
+  border: 8px solid #2196f3;
+  border-radius: 5px;
+}
+
+.post h1 {
+  font-size: 22px;
+}
+
+.post p {
+  font-size: 20px;
+}
+
+.load-screen {
+  margin-top: 20%;
 }
