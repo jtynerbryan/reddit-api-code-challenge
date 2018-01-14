@@ -38,7 +38,7 @@ class FetchSubreddits extends React.Component {
     if (this.props.topics.sorted === false) {
       setTimeout(() => {
         this.props.sortTopicsAndSubreddits(this.props.topics.topicsWithSubreddits);
-      }, 3000);
+      }, 3500);
     } else {
       this.props.history.push('/topics');
     }
