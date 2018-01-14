@@ -56,6 +56,9 @@ class TopicsList extends React.Component {
     });
     return (
       <div>
+        <a href="https://github.com/jtynerbryan/reddit-api-code-challenge" target="_blank" rel="noopener noreferrer" style={{ float: 'right', color: '#fff', marginRight: '10px' }}>
+          Github Repo
+        </a>
         <h1>Topic List (click for relevant subreddits)</h1>
         <h4>Search Topics</h4>
         <form onSubmit={this.handleSubmit}>

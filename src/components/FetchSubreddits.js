@@ -5,7 +5,6 @@ import { fetchSubredditsbyTopic, sortTopicsAndSubreddits } from '../actions/inde
 
 class FetchSubreddits extends React.Component {
   state = {
-    sorted: false,
     names: [
       'architecture',
       'art',
