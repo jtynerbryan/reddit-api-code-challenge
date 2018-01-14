@@ -3,12 +3,17 @@ body {
   background-color: #212121;
   color: #fff;
 }
-/* 
+
 input {
   height: 30px;
-  width: 200px;
+  width: 250px;
   font-size: 20px;
-} */
+}
+
+input[type='submit'] {
+  height: 40px;
+  width: 100px;
+}
 
 .topic,
 button,
