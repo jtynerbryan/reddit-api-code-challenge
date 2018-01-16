@@ -35,7 +35,9 @@ class TopicsList extends React.Component {
     let topics = this.props.topics.topicsWithSubreddits.map(topic => {
       return topic.name;
     });
-    if (topics.includes(value)) {
+    if (value === '') {
+      alert('Please enter a topic to search');
+    } else if (topics.includes(value)) {
       this.props.setSubredditListToRender(value, this.props.topics.topicsWithSubreddits[topics.indexOf(value)]);
 
       this.props.history.push('/subreddit-list');
